@@ -18,7 +18,7 @@ let mosqueData = JSON.parse(localStorage.getItem('mosqueData')) || [
     }
 ];
 
-// কার্ড দেখাই
+// কার্ড দেখানোর ফাংশন
 function displayMosques() {
     const list = document.getElementById('mosqueList');
     list.innerHTML = '';
@@ -69,12 +69,30 @@ document.getElementById('mosqueForm').addEventListener('submit', function(e) {
         location: document.getElementById('location').value || 'https://maps.google.com'
     };
     
+    // ডাটা যোগ করি
     mosqueData.push(newMosque);
+    
+    // localStorage-এ সেভ করি
     localStorage.setItem('mosqueData', JSON.stringify(mosqueData));
-    displayMosques();
+    
+    // ⭐ গুরুত্বপূর্ণ: নিজে নিজে আপডেট হওয়ার জন্য
+    displayMosques(); // এই ট্যাবেই আপডেট হবে
+    
+    // অন্য ট্যাবগুলোর জন্য ইভেন্ট
+    window.dispatchEvent(new Event('storage'));
+    
     modal.style.display = "none";
     this.reset();
     alert('তথ্য যোগ হয়েছে!');
+});
+
+// অন্য ট্যাব থেকে আপডেট এলে
+window.addEventListener('storage', function(e) {
+    if (e.key === 'mosqueData') {
+        // localStorage থেকে নতুন ডাটা লোড করি
+        mosqueData = JSON.parse(localStorage.getItem('mosqueData')) || [];
+        displayMosques(); // এই ট্যাবেও আপডেট হবে
+    }
 });
 
 // প্রথমবার দেখাই
