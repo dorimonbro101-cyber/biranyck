@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বিরানি দিবা?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🍛 বিরানি দিবা?</h1>
+        <p>আপনার এলাকার মসজিদে ইফতারে কী দেওয়া হচ্ছে তা জানুন</p>
+    </div>
+
+    <div class="add-button-container">
+        <button id="addBtn" class="add-btn">+ নতুন তথ্য দিন</button>
+    </div>
+
+    <div class="mosque-list" id="mosqueList">
+        <!-- এখানে কার্ডগুলো দেখাবে -->
+    </div>
+
+    <!-- পপআপ ফর্ম -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>নতুন তথ্য যোগ করুন</h2>
+            <form id="mosqueForm">
+                <input type="text" id="name" placeholder="মসজিদের নাম" required>
+                <input type="text" id="area" placeholder="এলাকা" required>
+                <select id="foodType" required>
+                    <option value="">কী দেওয়া হচ্ছে?</option>
+                    <option value="বিরিয়ানি">বিরিয়ানি</option>
+                    <option value="তেহারি">তেহারি</option>
+                    <option value="জিলাপি">জিলাপি</option>
+                    <option value="ছোলা">ছোলা</option>
+                </select>
+                <input type="text" id="time" placeholder="সময় (যেমন: ৬:৩০টা)" required>
+                <input type="text" id="location" placeholder="গুগল লোকেশন লিংক">
+                <button type="submit">সাবমিট</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
